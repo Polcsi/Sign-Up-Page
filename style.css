@@ -1,0 +1,274 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+    display: block;
+}
+
+body {
+    overflow: auto;
+    overscroll-behavior: none;
+    font-family: sans-serif;
+}
+
+:root {
+    --glassmorphic: rgba(255, 255, 255, 0.3);
+    --text-color: #fff;
+    --gradient: -45deg, #cbb4d4, #20002c;
+}
+
+.container {
+    background: #20002c;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(var(--gradient));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(var(--gradient)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    background-size: 400%;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 70% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.container form {
+    color: var(--text-color);
+    background: var(--glassmorphic);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+    padding: 1.2em 2em 2em 2em;
+    border-radius: 20px;
+    border-left: 1px solid var(--glassmorphic);
+    border-top: 1px solid var(--glassmorphic);
+    box-shadow: 20px 40px -6px rgba(0, 0, 0, 0.2);
+    width: 550px;
+    height: 700px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-areas:
+    'title title'
+    'firstname lastname'
+    'email username'
+    'pwd1 pwd2'
+    'btn btn';
+    grid-template-rows: auto 91px 91px 91px 120px;
+    grid-gap: 0 10px;
+}
+
+.container form > .title {
+    grid-area: title;
+}
+
+.container form > .pwd1 {
+    grid-area: pwd1;
+}
+
+.container form > #pwd2 {
+    grid-area: pwd2;
+}
+
+.container form > #lastname {
+    grid-area: lastname;
+}
+
+.container form > #firstname {
+    grid-area: firstname;
+}
+
+.container form > .container form input[type=email] {
+    grid-area: email;
+}
+
+.container form > .container form input[type=text] {
+    grid-area: username;
+}
+
+.container form > .container form input[type=button] {
+    grid-area: btn;
+}
+
+.title {
+    display: grid;
+    justify-content: center;
+}
+
+.title #welcome {
+    font-size: 2.9em;
+    font-weight: 600;
+}
+
+.title #content {
+    font-size: .9em;
+    text-align: center;
+}
+
+.container form input {
+    color: var(--text-color);
+    background: transparent;
+    outline: none;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-left: 1px solid var(--glassmorphic);
+    border-top: 1px solid var(--glassmorphic);
+    border-radius: 5000px;
+    width: 230px;
+    padding: 1em;
+    font-family: Montserrat, sans-serif;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+    border: 3px solid transparent;
+}
+
+.container form #submitbtn {
+    width: 150px;
+    font-size: 1rem;
+    justify-self: start;
+    align-self: center;
+
+    color: var(--text-color);
+    background: transparent;
+    outline: none;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-left: 1px solid var(--glassmorphic);
+    border-top: 1px solid var(--glassmorphic);
+    border-radius: 5000px;
+    padding: 1em;
+    font-family: Montserrat, sans-serif;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+    border: 3px solid transparent;
+}
+
+.container  form #submitbtn:hover {
+    cursor: pointer;
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.3),
+    0 0 80px rgba(0, 0, 0, 0.3);
+}
+
+.container form #submitbtn:active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.container form input[type=email]:focus, .container form input[type=password]:focus, .container form input[type=text]:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+    border: 3px solid #ffffff;
+}
+
+::placeholder {
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    color: var(--text-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.pwd1 {
+    position: relative;
+}
+
+.pwd2 {
+    position: relative;
+}
+
+.icon {
+    background: none;
+    border: none;
+    font-size: 1.3em;
+    cursor: pointer;
+    position: absolute;
+    left: 190px;
+    top: 12px;
+    z-index: 10;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (max-width: 768px) 
+{
+    .container form input {
+        width: 180px;
+        font-size: .8em;
+    }
+
+    .container form {
+       
+        padding: 1.2em 2em 2em 2em;
+        width: 100%;
+        height: 86%;
+        grid-template-rows: auto 91px 91px 91px 120px;
+        grid-gap: 0 6px;
+    }
+
+    .icon {
+        font-size: 1.2em;
+        left: 143px;
+        top: 14px;
+    }
+
+    .container form #submitbtn {
+        width: 140px;
+        font-size: .9rem;
+    }
+}
+
+@media screen and (max-width: 490px) 
+{
+    .container form input {
+        width: 160px;
+        font-size: .7em;
+    }
+
+    .container form {
+       
+        padding: 1.2em 1em 1.5em 1em;
+        width: 100%;
+        height: 85%;
+        grid-template-rows: auto 81px 81px 81px 100px;
+        grid-gap: 0 5px;
+    }
+
+    .icon {
+        font-size: 1em;
+        left: 130px;
+        top: 13px;
+    }
+
+    .container form #submitbtn {
+        width: 130px;
+        font-size: .8rem;
+    }
+
+    .title #welcome {
+        font-size: 2.5em;
+    }
+    
+    .title #content {
+        font-size: .7em;
+    }
+}
