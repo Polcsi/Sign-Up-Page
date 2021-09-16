@@ -7,8 +7,8 @@ function showPwd(e)
     var className = array[1].parentNode.className;
 
     var passwordField = document.getElementById(`${className}`);
-    var showbtn = document.getElementById(className === "pwd1" ? "show-pwd1" : "show-pwd2");
-    var hidebtn = document.getElementById(className === "pwd1" ? "hide-pwd1" : "hide-pwd2")
+    var showbtn = document.getElementById(`show-${className}`);
+    var hidebtn = document.getElementById(`hide-${className}`)
     passwordField.type = "text";
     showbtn.style.display = "none";
     hidebtn.style.display = "unset";
@@ -20,8 +20,8 @@ function hidePwd(e)
     var className = array[1].parentNode.className;
 
     var passwordField = document.getElementById(`${className}`);
-    var showbtn = document.getElementById(className === "pwd1" ? "show-pwd1" : "show-pwd2");
-    var hidebtn = document.getElementById(className === "pwd1" ? "hide-pwd1" : "hide-pwd2")
+    var showbtn = document.getElementById(`show-${className}`);
+    var hidebtn = document.getElementById(`hide-${className}`)
     passwordField.type = "password";
     showbtn.style.display = "unset";
     hidebtn.style.display = "none";
@@ -53,4 +53,26 @@ function checkPwd()
         pwd2.style.backgroundColor = "unset";
         submitbtn.disabled = false;
     }
+}
+
+const loginBtn = document.getElementById("login-page-btn");
+const form = document.getElementById("sign-up-form");
+const signUpBtn = document.getElementById("sign-up-btn");
+const card = document.querySelector(".card");
+let timeOut = 700;
+
+loginBtn.onclick = () => {
+    card.style.transform = "rotateY(0.5turn)";
+    loginBtn.style.display = "none";
+    setTimeout(function(){
+        signUpBtn.style.display = "unset";
+    }, timeOut);
+}
+
+signUpBtn.onclick = () => {
+    card.style.transform = "rotateY(1turn)";
+    signUpBtn.style.display = "none";
+    setTimeout(function(){
+        loginBtn.style.display = "unset"; 
+    }, timeOut);
 }

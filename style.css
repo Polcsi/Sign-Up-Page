@@ -19,6 +19,7 @@ body {
     --glassmorphic: rgba(255, 255, 255, 0.3);
     --text-color: #fff;
     --gradient: -45deg, #cbb4d4, #20002c;
+    --shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
 }
 
 .container {
@@ -28,10 +29,11 @@ body {
     background-size: 400%;
     width: 100%;
     height: 100%;
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
     animation: gradient 15s ease infinite;
+    perspective: 200em;
 }
 
 @keyframes gradient {
@@ -46,12 +48,51 @@ body {
     }
 }
 
-.container form {
+.card {
+    transform-style: preserve-3d;
+    transition: all ease 800ms;
+}
+
+.face {
+    backface-visibility: hidden;
+}
+
+.face:last-child {
+    transform: rotateY(0.5turn);
+}
+
+.card form {
+    position: absolute;
+    top: 0;
+}
+
+#login-form {
     color: var(--text-color);
     background: var(--glassmorphic);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow);
+    padding: 1.2em 2em 2em 2em;
+    border-radius: 20px;
+    border-left: 1px solid var(--glassmorphic);
+    border-top: 1px solid var(--glassmorphic);
+    box-shadow: 20px 40px -6px rgba(0, 0, 0, 0.2);
+    width: 550px;
+    height: 700px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-gap: -10px 10px;
+    grid-template-rows: auto 91px 91px 150px;
+}
+
+#sign-up-form {
+    position: relative;
+    color: var(--text-color);
+    background: var(--glassmorphic);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
     padding: 1.2em 2em 2em 2em;
     border-radius: 20px;
     border-left: 1px solid var(--glassmorphic);
@@ -70,37 +111,38 @@ body {
     'btn btn';
     grid-template-rows: auto 91px 91px 91px 120px;
     grid-gap: 0 10px;
+    transition: transform ease .8s;
 }
 
-.container form > .title {
+#sign-up-form > .title {
     grid-area: title;
 }
 
-.container form > .pwd1 {
+#sign-up-form > .pwd1 {
     grid-area: pwd1;
 }
 
-.container form > #pwd2 {
+#sign-up-form > #pwd2 {
     grid-area: pwd2;
 }
 
-.container form > #lastname {
+#sign-up-form > #lastname {
     grid-area: lastname;
 }
 
-.container form > #firstname {
+#sign-up-form > #firstname {
     grid-area: firstname;
 }
 
-.container form > .container form input[type=email] {
+#sign-up-form > .container form input[type=email] {
     grid-area: email;
 }
 
-.container form > .container form input[type=text] {
+#sign-up-form > .container form input[type=text] {
     grid-area: username;
 }
 
-.container form > .container form input[type=button] {
+#sign-up-form > .container form input[type=button] {
     grid-area: btn;
 }
 
@@ -109,17 +151,17 @@ body {
     justify-content: center;
 }
 
-.title #welcome {
+.title .welcome {
     font-size: 2.9em;
     font-weight: 600;
 }
 
-.title #content {
+.title .content {
     font-size: .9em;
     text-align: center;
 }
 
-.container form input {
+.card input {
     color: var(--text-color);
     background: transparent;
     outline: none;
@@ -139,7 +181,11 @@ body {
     border: 3px solid transparent;
 }
 
-.container form #submitbtn {
+#login-form-btn {
+    justify-self: center; 
+}
+
+.card button {
     width: 150px;
     font-size: 1rem;
     justify-self: start;
@@ -163,17 +209,18 @@ body {
     border: 3px solid transparent;
 }
 
-.container  form #submitbtn:hover {
+.card button:hover {
     cursor: pointer;
     box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.3),
     0 0 80px rgba(0, 0, 0, 0.3);
 }
 
-.container form #submitbtn:active {
+.card button:active {
     background: rgba(255, 255, 255, 0.2);
 }
 
-.container form input[type=email]:focus, .container form input[type=password]:focus, .container form input[type=text]:focus {
+#sign-up-form input[type=email]:focus, #sign-up-form input[type=password]:focus, #sign-up-form input[type=text]:focus,
+#login-form input[type=password]:focus, #login-form input[type=text]:focus {
     background: rgba(255, 255, 255, 0.3);
     box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
     border: 3px solid #ffffff;
@@ -194,6 +241,10 @@ body {
     position: relative;
 }
 
+.pwd3 {
+    position: relative;
+}
+
 .icon {
     background: none;
     border: none;
@@ -206,6 +257,46 @@ body {
 }
 
 .hide {
+    display: none;
+}
+
+.loginbtn {
+    transform: rotate(90deg);
+    position: relative;
+}
+
+.loginbtn button {
+    font-family: Montserrat, sans-serif;
+    position: absolute;
+    top: -36px;
+    z-index: -1;
+    color: var(--text-color);
+    background: var(--glassmorphic);
+    border: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px 5px 0px 0px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    outline: none;
+    cursor: pointer;
+    transition: all ease .2s;
+    box-shadow: var(--shadow);
+}
+
+.loginbtn button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    padding-bottom: 20px;
+    padding-top: 20px;
+    top: -56px;
+}
+
+.loginbtn button:hover:active {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#sign-up-btn {
+    position: absolute;
+    z-index: -1;
     display: none;
 }
 
@@ -264,11 +355,11 @@ body {
         font-size: .8rem;
     }
 
-    .title #welcome {
+    .title .welcome {
         font-size: 2.5em;
     }
     
-    .title #content {
+    .title .content {
         font-size: .7em;
     }
 }

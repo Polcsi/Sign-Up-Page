@@ -10,27 +10,48 @@
 </head>
 <body>
     <div class="container">
-        <form>
-            <div class="title">
-                <span id="welcome">Welcome</span>
-                <span id="content">on Sign Up Page</span>
-            </div>
-            <input id="firstname" type="text" placeholder="First Name" required="" autocomplete="off">
-            <input id="lastname" type="text" placeholder="Last Name" required="" autocomplete="off">
-            <input type="email" placeholder="Email" required="">
-            <input type="text" placeholder="Username" required="">
-            <div class="pwd1">
-                <div id="show-pwd1" class="icon show"><i class="fas fa-eye"></i></div>
-                <div id="hide-pwd1" class="icon hide"><i class="fas fa-eye-slash"></i></div>
-                <input onkeyup="checkPwd()" id="pwd1" type="password" placeholder="Password" required="">
-            </div>
-            <div class="pwd2">
-                <div id="show-pwd2" class="icon show"><i class="fas fa-eye"></i></div>
-                <div id="hide-pwd2" class="icon hide"><i class="fas fa-eye-slash"></i></div>
-                <input onkeyup="checkPwd()" id="pwd2" type="password" placeholder="Confirmn Password" required="">
-            </div>
-            <button id="submitbtn" type="submit">Sign Up</button>
-        </form>
+        <div class="card">
+            <form class="face" id="sign-up-form">
+                <div class="title">
+                    <span class="welcome">Welcome</span>
+                    <span class="content">on Sign Up Page</span>
+                </div>
+                <input id="firstname" type="text" placeholder="First Name" required="" autocomplete="off">
+                <input id="lastname" type="text" placeholder="Last Name" required="" autocomplete="off">
+                <input type="email" placeholder="Email" required="">
+                <input type="text" placeholder="Username" required="">
+                <div class="pwd1">
+                    <div id="show-pwd1" class="icon show"><i class="fas fa-eye"></i></div>
+                    <div id="hide-pwd1" class="icon hide"><i class="fas fa-eye-slash"></i></div>
+                    <input onkeyup="checkPwd()" id="pwd1" type="password" placeholder="Password" required="">
+                </div>
+                <div class="pwd2">
+                    <div id="show-pwd2" class="icon show"><i class="fas fa-eye"></i></div>
+                    <div id="hide-pwd2" class="icon hide"><i class="fas fa-eye-slash"></i></div>
+                    <input onkeyup="checkPwd()" id="pwd2" type="password" placeholder="Confirmn Password" required="">
+                </div>
+                <button id="submitbtn" type="submit">Sign Up</button>
+            </form>
+            <form id="login-form" class="face">
+                <div class="title">
+                    <span class="welcome">Welcome</span>
+                    <span class="content">on Login Page</span>
+                </div> 
+                <input id="login-username" type="text" placeholder="Username" required="" autocomplete="off">
+                <div class="login-pwd">
+                    <div class="pwd3">
+                        <div id="show-pwd3" class="icon show"><i class="fas fa-eye"></i></div>
+                        <div id="hide-pwd3" class="icon hide"><i class="fas fa-eye-slash"></i></div>
+                    </div>
+                    <input type="password" id="pwd3" placeholder="Password" required="">
+                </div>
+                <button id="login-form-btn" type="submit">Login</button>
+            </form>
+        </div>
+        <div class="loginbtn">
+            <button id="login-page-btn">Login</button>
+            <button id="sign-up-btn">SignUp</button>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
