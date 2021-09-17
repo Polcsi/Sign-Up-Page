@@ -324,9 +324,10 @@ body {
     }
     
     .loginbtn button {
-        left: 10vw;
+        left: 12vw;
         top: 0px;
         border-radius: 0px 0px 5px 5px;
+        font-size: .7rem;
     }
 
     .loginbtn button:hover {
@@ -339,6 +340,11 @@ body {
     .card form input {
         width: 160px;
         font-size: .7em;
+    }
+
+    #sign-up-form {
+        grid-template-rows: auto 81px 81px 81px 90px;
+        grid-gap: 0 7px;
     }
 
     .icon {
