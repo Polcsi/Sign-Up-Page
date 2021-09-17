@@ -4,7 +4,7 @@ const hidebtns = document.querySelectorAll('.hide');
 function showPwd(e)
 {
     var array = e.path;
-    var className = array[1].parentNode.className;
+    var className = (array[1].parentNode.className).substring(0,4);
 
     var passwordField = document.getElementById(`${className}`);
     var showbtn = document.getElementById(`show-${className}`);
@@ -17,7 +17,7 @@ function showPwd(e)
 function hidePwd(e)
 {
     var array = e.path;
-    var className = array[1].parentNode.className;
+    var className = (array[1].parentNode.className).substring(0,4);
 
     var passwordField = document.getElementById(`${className}`);
     var showbtn = document.getElementById(`show-${className}`);
